@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="header-container">
+        <h1>Sorting Visualizer</h1>
+    </div>
+</div>
+   
+    <div class="button-container-1">
+        <button class ="btn" onclick = " init(128)">Create New Array</button>
+        <button class ="btn" onclick = "resetArr()">Reset Array</button>
+        <input type="range" id="myRange" min ="16" max = "256" value="64" step="2" oninput="init(this.value)">
+        <p>Value: <span id="sliderValue">64</span></p>
+    </div>
+    <canvas id = "myCanvas"></canvas>
+    <hr>
+    
+    <div class="button-container"> 
+        <button class ="btn" onClick = "play(1)">Bubble Sort</button>
+        <button class ="btn" onClick = "play(2)">Quick Sort</button>
+        <button class ="btn" onClick = "play(3)">Insertion Sort</button>
+        <button class ="btn" onClick = "play(4)">Selection Sort</button>
+        <button class ="btn" onClick = "play(5)">Merge Sort</button>
+
+
+
+    </div>
+    <script src = "math.js"></script>
+    <script src = "column.js"></script>
+    <script src = "script.js"></script>
+
+</body>
+</html>
