@@ -14,10 +14,10 @@
 </div>
    
     <div class="button-container-1">
-        <button class ="btn" onclick = " init(128)">Create New Array</button>
-        <button class ="btn" onclick = "resetArr()">Reset Array</button>
-        <input type="range" id="myRange" min ="16" max = "256" value="64" step="2" oninput="init(this.value)">
-        <p>Value: <span id="sliderValue">64</span></p>
+        <button class ="btn" onclick = " init(sliderValue.innerText)">Create New Array</button>
+        <button class ="btn" onclick = "resetArr(myRange.value)">Reset Array</button>
+        <input type="range" id="myRange" min ="0" max = "4" value="0" step="1" >
+        <p>Value: <span id="sliderValue">16</span></p>
     </div>
     <canvas id = "myCanvas"></canvas>
     <hr>

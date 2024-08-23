@@ -2,31 +2,48 @@ myCanvas.width = 900;
 myCanvas.height = 600;
 
 const margin = 30;
-const array = [];
+let array = [];
 /*const n = 128;*/
 let reset = [];
 let moves = [];
-const cols = [];
+let cols = [];
 /*let spacing = ((myCanvas.width - 2 * margin) / n);*/
 let heights = [];
+
+
 
 //variable for our canvas that will hold the columns of the graph 
 const ctx = myCanvas.getContext("2d");
 
 const maxColumnHeight = 200;
 
+const fixedValues = [16, 32, 64, 128, 256];
 
+const slider = document.getElementById('myRange');
+const displayValue = document.getElementById('sliderValue');
+
+slider.addEventListener('input', function() {
+    const value = fixedValues[slider.value];
+    displayValue.innerText = value;
+    init(value); // Call your initialization function with the selected value
+});
 
 function init(n){
     
     document.getElementById('sliderValue').innerText = n;
-    
+    array = [];
+    console.log("Array Length: "+ array.length + " N = " + n);
+    console.log("NEW ARRAY");
     for (let i = 0; i < n; ++i){
         array[i] = Math.floor(Math.random() * (2000 - 400) + 400);
         reset[i] = array[i];
+        console.log(array[i]);
     }
     heights = [];
     moves = [];
+    cols = [];
+
+    array.length = n; 
     //creating n number of columns and initializing their position in the array
     for (let i = 0; i < array.length; ++i){
         const x = i * ((myCanvas.width - 2 * margin) / n) + ((myCanvas.width - 2 * margin) / n) / 2 + margin;
@@ -59,6 +76,7 @@ function resetArr(){
     }
 }
 function play(n){
+    console.log(array.length);
     switch(n){
         case 1: moves = bubbleSort(array);
             break;
@@ -117,9 +135,7 @@ function bubbleSort(array){
          }
     } while(swapped);
 
-    for (let i = 0; i < moves.length; ++i){
-        console.log(moves[i]);
-    }    
+      
     return moves;
 }
 /*---------------------------------------------------------------------- */
@@ -319,7 +335,6 @@ function merge(arr , l , m , r) {
         j++;
         k++;
     }
-    console.log(heights.length);
 
     
 }
@@ -334,13 +349,16 @@ function animate() {
     ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
 
     let changed = false;
-
+    
     for (let i = 0; i < cols.length; ++i){
 
         //if any changed frame is encountered, changed will be set to true
         changed = cols[i].draw(ctx, "gray")||changed;
+        
 
     }
+    
+    
 
     if (!changed && moves.length > 0){
         const move = moves.shift();

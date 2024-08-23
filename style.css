@@ -18,6 +18,21 @@ body {
 
 }
 
+@media screen and (max-width: 900px) {
+  #myCanvas {
+    max-width: 95vw;
+
+  }
+
+}
+
+@media screen and (max-width: 300px) {
+  .header-container {
+    max-width: 95vw;
+    
+  }
+}
+
 .button-container-1 {
     margin-top: 2%;
     position: relative;
